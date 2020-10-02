@@ -1,3 +1,5 @@
+# SCRIPT IN PROGRESS
+
 #! /usr/bin/env python3
 
 import os

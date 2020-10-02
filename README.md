@@ -10,4 +10,4 @@ We recommend adding this to your hotkeys:
 
 Open your settings -> keyboard -> add -> Enter path to script -> assign hot key
 
-#Enjoy!
+Enjoy!

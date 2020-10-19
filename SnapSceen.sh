@@ -31,8 +31,8 @@ if [ $ans == "No" ]; then
    File_Name=$(zenity --entry --text "Enter Filename" --entry-text "");
 
 elif [ $ans == "Yes" ]; then
-   New_File_Path=$(zenity --entry --text "Enter New Filepath" --entry-text ""); echo $New_File_Path
-   File_Name=$(zenity --entry --text "Enter Filename" --entry-text "");  echo $File_Name
+   New_File_Path=$(zenity --entry --text "Enter New Filepath" --entry-text ""); 
+   File_Name=$(zenity --entry --text "Enter Filename" --entry-text "");  
 else
    zenity --error --text "Error"
 fi

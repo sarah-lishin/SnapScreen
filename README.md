@@ -8,6 +8,6 @@ Created to speed up the process of taking screenshots so that the workflow is le
 We recommend adding this to your hotkeys:
 (Make sure the script is exceutable)
 
-Open your settings -> keyboard -> add -> Enter path to script -> assign hot key
+On Linux: Open your settings -> Keyboard -> Add -> Enter path to script -> Assign hot key
 
 Enjoy!

@@ -34,7 +34,7 @@ elif [ $ans == "Yes" ]; then
    New_File_Path=$(zenity --entry --text "Enter New Filepath" --entry-text ""); 
    File_Name=$(zenity --entry --text "Enter Filename" --entry-text "");  
 else
-   zenity --error --text "Error"
+   zenity --error --text "Error: Please Try Again"
 fi
 
 #run screenshooter area selection option and save

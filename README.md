@@ -3,6 +3,8 @@ Written by fiolet and dauntless311
 
 A Linux GUI tool to take and name screenshots faster and more organized. 
 
+Available in Bash or Python3 scripts.
+
 Created to speed up the process of taking screenshots so that the workflow is less impacted. 
 
 We recommend adding this to your hotkeys:

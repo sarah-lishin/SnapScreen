@@ -14,8 +14,10 @@ import os
 import subprocess
 
 
-# Change this to your Desired Filepath
+# Change this to your Desired Filepath or you can change it on the fly
 file_path = "/root/Desktop/Screenshots"
+new_file_path = ""
+file_name = ""
 
 
 class color:
@@ -24,36 +26,51 @@ class color:
     END = '\033[0m'
 
 
-zen = color.BOLD + color.MAG + "Please sudo apt-get install zenity" + color.END
-
-
+# check for GUI program
 def zenity():
     zen_check = subprocess.check_output(['which', 'zenity'], stderr=subprocess.STDOUT)
+    zen = color.BOLD + color.MAG + "Please sudo apt-get install zenity" + color.END
     if zen_check != 0:
         pass
     else:
         print("Error: " + "Zenity is Required for this script.")
         print(zen)
 
-def call_zenity():
+# Offers a chance to change the filepath
+def check_path():
     ans=subprocess.call(["zenity", "--question", "--text=Current Filepath: " + "\n" + "\n" +  file_path + "\n" + "\n" +"Do you want to change the Filepath?", "--width=250"])
-    file_name = ""
-    new_file_path = ""
-    if ans == 1:
-        file_name = subprocess.call(["zenity", "--entry", "--text=Enter Filename", "--entry-text="""])
-    elif ans == 0:
-        new_file_path = subprocess.call(["zenity", "--entry", "--text=Enter New Filepath", "--entry-text="""])
-        file_name = subprocess.call(["zenity", "--entry", "--text=Enter Filename", "--entry-text="""])
+    if ans == 0:
+        global new_file_path
+        new_path = subprocess.Popen(["zenity", "--entry", "--text=Enter New Filepath", "--entry-text="""], stdout=subprocess.PIPE, universal_newlines=True)
+        new_file_path = new_path.stdout.read().strip()
+    elif ans == 1:
+        pass
     else:
         subprocess.call(["zenity", "--error", "--text='Error'"])
 
 
+# Enter the filename
+def enter_name():
+    global file_name
+    get_file_name = subprocess.Popen(["zenity", "--entry", "--text=Enter Filename", "--entry-text="""], stdout=subprocess.PIPE, universal_newlines=True)
+    file_name = get_file_name.stdout.read().strip()
+
+
+# take the screenshot and save
 def snap():
+    final_nochange = str(file_path) + "/" + str(file_name)
+    final_newpath = str(new_file_path) + "/" + str(file_name)
+    if new_file_path == "":
+        subprocess.call(["xfce4-screenshooter", "-r", "-s", final_nochange], stderr=subprocess.STDOUT)
+    else:
+        subprocess.call(["xfce4-screenshooter", "-r", "-s", final_newpath], stderr=subprocess.STDOUT)
 
      
 def main():
     zenity()
-    call_zenity()
-
+    check_path()
+    enter_name()
+    snap()
+    
 
 main()
